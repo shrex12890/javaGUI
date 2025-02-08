@@ -4,6 +4,7 @@
  */
 package firstgui;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +18,7 @@ public class FirstGui implements ActionListener {
 
     int count = 0;
     private JFrame frame;
-    private JButton button1,button2;
+    private JButton button1,button2,button3;
     private JLabel label;
     private JPanel panel;
             
@@ -30,14 +31,19 @@ public class FirstGui implements ActionListener {
         button2 = new JButton("reset");
         button2.addActionListener(this);
         
+        button3 = new JButton("sub");
+        button3.addActionListener(this);
+        
         label = new JLabel("number of clicks : 0");
         
         
         
         panel = new JPanel();
+        panel.setBackground(Color.yellow);
         panel.setBorder(BorderFactory.createEmptyBorder(30,30,10,30));
         panel.setLayout(new GridLayout(0,1));
         panel.add(button1);
+        panel.add(button3);
         panel.add(button2);
         panel.add(label);
         
@@ -59,6 +65,9 @@ public class FirstGui implements ActionListener {
         } else if (e.getSource() == button2) {
             reset(e);
         }
+        else if (e.getSource() == button3) {
+            sub(e);
+        }
 }
 
     
@@ -75,4 +84,9 @@ public class FirstGui implements ActionListener {
         label.setText("number of clicks : "+ count);
     }
     
+    public void sub(ActionEvent e)
+    {
+        count--;
+        label.setText("number of clicks : "+ count);
+    }
 }
